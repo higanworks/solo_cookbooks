@@ -25,3 +25,7 @@ EOL
 
 git clone https://github.com/higanworks/solo_cookbooks.git
 ```
+
+
+## Usage example
+`chef-solo -c ./solo.rb -o "monit_binaries"`

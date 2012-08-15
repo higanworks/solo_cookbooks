@@ -15,7 +15,12 @@ EOL
 bundle
 
 rvm wrapper $rvm_env_string wrap chef-solo
+mkdir /opt/chef-solo/cache
 
-cat ./solo.rb 
+cat <<"EOL" >./solo.rb
+file_cache_path "/opt/chef-solo/cache"
 cookbook_path ["/opt/chef-solo/solo_cookbooks"]
+EOL
+
+git clone https://github.com/higanworks/solo_cookbooks.git
 ```

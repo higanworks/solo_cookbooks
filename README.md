@@ -4,6 +4,7 @@
 
 ```
 mkdir /opt/chef-solo
+cd /opt/chef-solo
 
 rvm use @chef-solo --create
 echo rvm use $rvm_env_string > .rvmrc

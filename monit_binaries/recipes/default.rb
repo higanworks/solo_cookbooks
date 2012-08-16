@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: monit_src
+# Cookbook Name:: monit_binaries
 # Recipe:: default
 #
 # Copyright 2012, Higanworks LLC.
@@ -22,16 +22,15 @@ script "install_from_source" do
   Chef::Log.info("Start: install monit-#{node[:monit][:version]}")
   flags "-e"
   code <<-"EOH"
-      ehco
-      cd /usr/local/src/monit/
-      wget http://mmonit.com/monit/dist/binary/#{node[:monit][:version]}/#{node[:monit][:binaries]}.tar.gz
-      tar xvzf #{node["monit"][:binaries]}.tar.gz
-      cp -f monit-#{node[:monit][:version]}/bin/monit /usr/sbin/
-      cp -f monit-#{node[:monit][:version]}/man/man1/monit.1 /usr/share/man/man1
-      mandb
+    mkdir -p #{Chef::Config[:file_cache_path]}/monit
+    cd #{Chef::Config[:file_cache_path]}
+    wget http://mmonit.com/monit/dist/binary/#{node[:monit][:version]}/#{node[:monit][:binaries]}.tar.gz
+    tar xvzf #{node["monit"][:binaries]}.tar.gz
+    cp -f monit-#{node[:monit][:version]}/bin/monit /usr/sbin/
+    cp -f monit-#{node[:monit][:version]}/man/man1/monit.1 /usr/share/man/man1
+    mandb
   EOH
 
-  only_if "test ! -f /usr/local/src/monit/#{node[:monit][:binaries]}.tar.gz"
+  only_if "test ! -f #{Chef::Config[:file_cache_path]}/monit/#{node[:monit][:binaries]}.tar.gz"
   Chef::Log.info("End: install monit-#{node[:monit][:version]}")
 end
-

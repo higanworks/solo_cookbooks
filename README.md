@@ -20,6 +20,7 @@ mkdir /opt/chef-solo/cache
 
 cat <<"EOL" >./solo.rb
 file_cache_path "/opt/chef-solo/cache"
+file_backup_path "/opt/chef-solo/backup"
 cookbook_path ["/opt/chef-solo/solo_cookbooks"]
 EOL
 

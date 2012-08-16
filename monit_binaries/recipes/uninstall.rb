@@ -9,7 +9,7 @@
 # Therefore this is unstable. Don't use.
 
 
-%w{/etc/monit /usr/local/src/monit}.each do |w|
+%W{/etc/monit #{Chef::Config[:file_cache_path]}/monit}.each do |w|
   directory w do
     recursive true
     action :delete

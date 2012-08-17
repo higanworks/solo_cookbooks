@@ -1,4 +1,4 @@
-maintainer       "YOUR_COMPANY_NAME"
+maintainer       "Higanworks LLC."
 maintainer_email "YOUR_EMAIL"
 license          "All rights reserved"
 description      "Installs/Configures mongodb-10gen"

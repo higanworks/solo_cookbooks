@@ -25,6 +25,9 @@ cookbook_path ["/opt/chef-solo/solo_cookbooks"]
 EOL
 
 git clone https://github.com/higanworks/solo_cookbooks.git
+
+cd solo_cookbooks
+git submodule update --init
 ```
 
 

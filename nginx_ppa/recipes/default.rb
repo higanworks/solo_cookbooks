@@ -16,3 +16,7 @@ apt_repository "nginx-ppa" do
   keyserver "keyserver.ubuntu.com"
   key "C300EE8C"
 end 
+
+package "nginx" do
+  action :install
+end

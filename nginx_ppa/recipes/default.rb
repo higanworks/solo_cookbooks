@@ -26,7 +26,7 @@ execute "apt-get update" do
   action :run
 end
 
-file "/etc/apt/sources.list.d/nginx-ppa-source.update-once" do
+file "/etc/apt/sources.list.d/nginx-ppa-source.update-once.list" do
   action :create_if_missing
   notifies :run, resources(:execute => "apt-get-update"), :immediately
 end

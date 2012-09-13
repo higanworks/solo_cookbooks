@@ -2,9 +2,9 @@
 # Cookbook Name:: nginx_ppa
 # Recipe:: default
 #
-# Copyright 2012, YOUR_COMPANY_NAME
+# Copyright 2012, HiganWorks LLC
 #
-# All rights reserved - Do Not Redistribute
+# All rights reserved
 #
 #
 include_recipe "apt"
@@ -16,6 +16,20 @@ apt_repository "nginx-ppa" do
   keyserver "keyserver.ubuntu.com"
   key "C300EE8C"
 end 
+
+# cookbook apt has bug ?
+# apt-get update notifies does not work.
+# here is work around.
+execute "apt-get update" do
+  command "apt-get update"
+  ignore_failure true
+  action :run
+end
+
+file "/etc/apt/sources.list.d/nginx-ppa-source.update-once" do
+  action :create_if_missing
+  notifies :run, resources(:execute => "apt-get-update"), :immediately
+end
 
 package "nginx" do
   action :install

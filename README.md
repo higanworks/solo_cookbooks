@@ -1,3 +1,9 @@
+Notice
+=====
+
+Move to https://github.com/higanworks-cookbooks
+
+
 # solo cookbooks
 
 ## setup chef-solo
